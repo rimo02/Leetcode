@@ -13,8 +13,9 @@ struct Stack
 void buildTree(struct Tree *Ptr);
 void Inorder(struct Tree *Root);
 void Preorder(struct Tree *Root);
+void Postorder(struct Tree *Root);
 int isEmpty(struct Stack *Top);
-void push(struct Tree *Ptr, struct Stack **Top);
+void Push(struct Tree *Ptr, struct Stack **Top);
 struct Tree *Pop(struct Stack **Top);
 int main()
 {
@@ -25,6 +26,8 @@ int main()
     // Inorder(Root);
     printf("\nPreorder=");
     Preorder(Root);
+    // printf("\nPostorder=");
+    // Postorder(Root);
     free(Root);
 }
 void buildTree(struct Tree *Ptr)
@@ -53,7 +56,7 @@ void buildTree(struct Tree *Ptr)
         buildTree(New);
     }
 }
-void push(struct Tree *Ptr, struct Stack **Top)
+void Push(struct Tree *Ptr, struct Stack **Top)
 {
     struct Stack *New;
     New = (struct Stack *)malloc(sizeof(struct Stack));
@@ -90,7 +93,7 @@ void Inorder(struct Tree *Root)
     {
         if (Ptr != NULL)
         {
-            push(Ptr, &Top);
+            Push(Ptr, &Top);
             Ptr = Ptr->LC;
         }
         else
@@ -115,7 +118,7 @@ void Preorder(struct Tree *Root)
         {
             if (Ptr->RC != NULL)
             {
-                push(Ptr->RC, &Top);
+                Push(Ptr->RC, &Top);
             }
             printf("%d ", Ptr->Data);
             Ptr = Ptr->LC;
@@ -130,27 +133,43 @@ void Preorder(struct Tree *Root)
         }
     }
 }
-void Postoder(struct Tree *Root)
+void Postorder(struct Tree *Root)
 {
-    struct Tree *Top = NULL;
+    struct Stack *Top = NULL;
     struct Tree *Ptr = Root;
+    struct Tree *ptr1 = NULL;
+    struct Tree *ptr2 = NULL;
+    struct Stack *stack;
     while (1)
     {
         if (Ptr != NULL)
         {
             if (Ptr->RC != NULL)
             {
-                push(Ptr->RC);
+                Push(Ptr->RC, &Top);
             }
-            push(Ptr);
+            Push(Ptr, &Top);
+            Ptr = Ptr->LC;
         }
         else
         {
-            if(isEmpty(top))
+            if (isEmpty(Top))
             {
                 break;
             }
-            
+            ptr1 = Pop(&Top);
+            if (ptr1->RC && Top->t == ptr1->RC)
+            {
+                ptr2 = Pop(&Top);
+                Push(ptr1, &Top);
+                Push(ptr2, &Top);
+                Ptr = ptr1->RC;
+            }
+            else
+            {
+                printf("%d ", ptr1->Data);
+                // Ptr = NULL;
+            }
         }
     }
 }
