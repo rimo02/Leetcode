@@ -75,9 +75,9 @@ int solveMazeRec(int maze[N][N], int x, int y, int i, int arr[N][N])
 }
 int main()
 {
-    int maze[N][N] = {{1, 0, 0, 0},
-                      {0, 1, 0, 1},
-                      {0, 1, 0, 0},
+    int maze[N][N] = {{1, 1, 1, 0},
+                      {0, 1, 1, 1},
+                      {0, 1, 1, 0},
                       {1, 1, 1, 1}};
     solveMaze(maze);
 }
