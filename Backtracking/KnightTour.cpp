@@ -61,7 +61,7 @@ int solveKTRec(int x, int y, int i, int arr[N][N], int xMove[8], int yMove[8])
         if (isSafe(nextx, nexty, arr))
         {
             arr[nextx][nexty] = i;
-            printsol(arr);
+            // printsol(arr);
             if (solveKTRec(nextx, nexty, i + 1, arr, xMove, yMove) == 1)
             {
                 return 1;
