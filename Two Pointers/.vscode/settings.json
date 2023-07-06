@@ -1,9 +1,11 @@
 {
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
+    ],
     "files.associations": {
         "*.rmd": "markdown",
         "stdio.h": "c",
         "iostream": "cpp",
-        "functional": "cpp",
-        "vector": "cpp"
+        "*.tcc": "cpp"
     }
 }
