@@ -70,6 +70,10 @@ int dynamicProg(int arr[], int n)
             }
         }
     }
+    for (int i = 0; i < n; i++)
+    {
+        cout << dp[i] << " ";
+    }
     return *max_element(dp, dp + n);
 }
 int dynamic2d(int arr[], int n)
@@ -100,11 +104,12 @@ int dynamic2d(int arr[], int n)
 }
 int main()
 {
-    int arr[] = {20, 10, 11, 15, 18, 16, 19, 21, 12};
+    // int arr[] = {20, 10, 11, 15, 18, 16, 19, 21, 12};
+    int arr[] = {1, 3, 5, 6, 4, 7};
     int n = sizeof(arr) / sizeof(arr[0]);
     // cout << "Longest Increasing subsequence using greedy approach= " << greedy(arr, n) << endl;
     // cout << "Longest Increasing subsequence using recursion= " << recursive(arr, 0, INT16_MIN, n) << endl;
     // cout << "Longest Increasing subsequence such that diff is 1 using recursion= " << recursive2(arr, 0, arr[0] - 1, n) << endl;
-    // cout << "Longest Increasing subsequence using Dynamic programming= " << dynamicProg(arr, n) << endl;
-    cout << "Longest Increasing subsequence using 2D array Dynamic programming= " << dynamic2d(arr, n) << endl;
+    cout << "\nLongest Increasing subsequence using Dynamic programming= " << dynamicProg(arr, n) << endl;
+    // cout << "Longest Increasing subsequence using 2D array Dynamic programming= " << dynamic2d(arr, n) << endl;
 }

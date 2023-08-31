@@ -18,7 +18,7 @@ int recursion(string s1, string s2, int m, int n)
     }
 }
 // Top - Down
-int topDownDp(string s1, string s2, int m, int n, vector<vector<int>> &dp)
+int memoization(string s1, string s2, int m, int n, vector<vector<int>> &dp)
 {
     if (m == 0 || n == 0)
     {
@@ -28,17 +28,17 @@ int topDownDp(string s1, string s2, int m, int n, vector<vector<int>> &dp)
     {
         if (s1[m - 1] == s2[n - 1])
         {
-            dp[m][n] = 1 + topDownDp(s1, s2, m - 1, n - 1, dp);
+            dp[m][n] = 1 + memoization(s1, s2, m - 1, n - 1, dp);
         }
         else
         {
-            dp[m][n] = 0 + max(topDownDp(s1, s2, m - 1, n, dp), topDownDp(s1, s2, m, n - 1, dp));
+            dp[m][n] = 0 + max(memoization(s1, s2, m - 1, n, dp), memoization(s1, s2, m, n - 1, dp));
         }
     }
     return dp[m][n];
 }
 // Bottom-up
-int bottomUpDp(string s1, string s2, int m, int n, vector<vector<int>> &arr)
+int tabulation(string s1, string s2, int m, int n, vector<vector<int>> &arr)
 {
     vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
     for (int i = 1; i < m + 1; i++)
@@ -69,18 +69,21 @@ int main()
 {
     string S1 = "AGGTAB";
     string S2 = "GXTXAYB";
+    // string S1 = "BL";
+    // string S2 = "YBY";
     int m = S1.size();
     int n = S2.size();
-    vector<vector<int>> arr(m + 1, vector<int>(n + 1, -1));
+    cout<<S1<<endl<<S2<<endl;
     // cout << recursion(S1, S2, m, n) << endl;
-    // cout << topDownDp(S1, S2, m, n, arr) << endl;
-    cout << bottomUpDp(S1, S2, m, n, arr) << endl;
-    // for (int i = 0; i < m + 1; i++)
-    // {
-    //     for (int j = 0; j < n + 1; j++)
-    //     {
-    //         cout << arr[i][j] << "\t";
-    //     }
-    //     cout << "\n";
-    // }
+    vector<vector<int>> arr(m + 1, vector<int>(n + 1, -1));
+    cout << memoization(S1, S2, m, n, arr) << endl;
+    // cout << tabulation(S1, S2, m, n, arr) << endl;
+    for (int i = 0; i < m + 1; i++)
+    {
+        for (int j = 0; j < n + 1; j++)
+        {
+            cout << arr[i][j] << "\t";
+        }
+        cout << "\n";
+    }
 }
