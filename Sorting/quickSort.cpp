@@ -31,10 +31,25 @@ int Partition(vector<int> &arr, int lb, int ub)
             printarr(arr);
         }
         printarr(arr);
-        swap(arr[lb], arr[end]);
-        printarr(arr);
     }
+    swap(arr[lb], arr[end]);
+    printarr(arr);
     return end;
+}
+int PartitionEnd(vector<int> &arr, int lb, int ub)
+{
+    int pivot = arr[ub];
+    int i = (lb - 1);
+    for (int j = lb; j <= ub - 1; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[ub]);
+    return (i + 1);
 }
 void QuickSort(vector<int> &arr, int lb, int ub)
 {
@@ -47,7 +62,7 @@ void QuickSort(vector<int> &arr, int lb, int ub)
 }
 int main()
 {
-    // vector<int> arr = {7, 6, 10, 5, 9, 2, 8, 4, 15, 1};
+    // vector<int> arr = {7, 6, 10, 5, 9, 2, 1, 34, 15, 8};
     vector<int> arr = {6, 9, 10, 5};
     int lb = 0, ub = arr.size() - 1;
     QuickSort(arr, lb, ub);

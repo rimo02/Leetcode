@@ -6,16 +6,17 @@ using namespace std;
 int main()
 {
     // vector<int> nums = {3, 7, 8, 4};
-    vector<int> nums = {3, 1, 2, 4};
+    // vector<int> nums = {2, 1, 5, 6, 2, 3};
+    vector<int> nums = {3,1,2,4};
     int n = nums.size();
     stack<int> stk; // maintain a monotinically increasing stack
-    vector<int> res(n, -1);
+    vector<int> res(n, n);
     for (int i = 0; i < n; i++)
     {
-        while (!stk.empty() && nums[stk.top()] > nums[i])
+        while (!stk.empty() && nums[stk.top()] >= nums[i])
         {
             if (!stk.empty())
-                res[stk.top()] = nums[i];
+                res[stk.top()] = i;
             stk.pop();
         }
         stk.push(i);

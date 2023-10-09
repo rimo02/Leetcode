@@ -2,7 +2,7 @@
 #include <stack>
 #include <vector>
 using namespace std;
-// find previous less element [3,7,8,4] -> [-1,-1,-1,-1]
+// find previous greater element [3,7,8,4] -> [-1,-1,-1,-1]
 int main()
 {
     vector<int> nums = {2, 4, 8, 5, 7};
@@ -16,7 +16,7 @@ int main()
             stk.pop();
         }
         if (!stk.empty())
-            res[i] = nums[stk.top()];
+            res[i] = stk.top();
         stk.push(i);
     }
     for (auto num : res)

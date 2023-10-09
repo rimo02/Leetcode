@@ -1,9 +1,12 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <list>
 using namespace std;
 class Graph
 {
-    map<int, list<int>> adj;
-    map<int, bool> visited;
+    unordered_map<int, list<int>> adj;
+    unordered_map<int, bool> visited;
 
 public:
     void addEdge(int v, int w)

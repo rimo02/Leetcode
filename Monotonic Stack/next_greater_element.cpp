@@ -2,7 +2,7 @@
 #include <stack>
 #include <vector>
 using namespace std;
-// find next less element [3,7,8,4] -> [7,8,-1,-1]
+// find next greater element [3,7,8,4] -> [7,8,-1,-1]
 int main()
 {
     vector<int> nums = {3, 7, 8, 4};
@@ -14,7 +14,7 @@ int main()
         while (!stk.empty() && nums[stk.top()] < nums[i])
         {
             if (!stk.empty())
-                res[stk.top()] = nums[i];
+                res[stk.top()] = i;
             stk.pop();
         }
         stk.push(i);
