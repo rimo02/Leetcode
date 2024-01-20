@@ -3,8 +3,12 @@
 using namespace std;
 int main()
 {
-    vector<int> arr = {7, 3, 1, 2, 3};
-    int n = arr.size();
+    int n = 5;
+    // vector<int> arr = {7, 3, 1, 2, 3};
+    vector<int> arr(n, 0);
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    // int n = arr.size();
     vector<int> dp(n, 0);
     for (int i = n - 1; i >= 0; i--)
     {

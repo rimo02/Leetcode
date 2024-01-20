@@ -67,23 +67,24 @@ int tabulation(string s1, string s2, int m, int n, vector<vector<int>> &arr)
 }
 int main()
 {
-    string S1 = "AGGTAB";
-    string S2 = "GXTXAYB";
+    string S1 = "ababaabaa";
+    string S2 = "aababaab";
     // string S1 = "BL";
     // string S2 = "YBY";
     int m = S1.size();
     int n = S2.size();
-    cout<<S1<<endl<<S2<<endl;
+    cout << S1 << endl
+         << S2 << endl;
     // cout << recursion(S1, S2, m, n) << endl;
     vector<vector<int>> arr(m + 1, vector<int>(n + 1, -1));
-    cout << memoization(S1, S2, m, n, arr) << endl;
-    // cout << tabulation(S1, S2, m, n, arr) << endl;
-    for (int i = 0; i < m + 1; i++)
-    {
-        for (int j = 0; j < n + 1; j++)
-        {
-            cout << arr[i][j] << "\t";
-        }
-        cout << "\n";
-    }
+    // cout << memoization(S1, S2, m, n, arr) << endl;
+    cout << tabulation(S1, S2, m, n, arr) << endl;
+    // for (int i = 0; i < m + 1; i++)
+    // {
+    //     for (int j = 0; j < n + 1; j++)
+    //     {
+    //         cout << arr[i][j] << "\t";
+    //     }
+    //     cout << "\n";
+    // }
 }
