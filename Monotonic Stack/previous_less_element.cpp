@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     // vector<int> nums = {2, 1, 5, 6, 2, 3};
-    vector<int> nums = {3,1,2,4};
+    vector<int> nums = {3, 1, 2, 4};
     int n = nums.size();
     stack<int> stk; // maintain a monotinically increasing stack
     vector<int> res(n, -1);
