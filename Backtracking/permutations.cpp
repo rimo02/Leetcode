@@ -18,7 +18,7 @@ public:
         {
             swap(words[idx], words[i]);
             dfs(words, idx + 1);
-            // swap(words[idx], words[i]);
+            swap(words[idx], words[i]);
         }
     }
     void findPermutations(vector<string> words)

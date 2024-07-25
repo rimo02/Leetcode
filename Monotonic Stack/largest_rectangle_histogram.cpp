@@ -5,24 +5,25 @@ using namespace std;
 class Solution
 {
 public:
-    // int largestRectangleArea1(vector<int>& heights)
-    // {
-    //     stack<int> stk;
-    //     int area=0;
-    //     heights.push_back(0);
-    //     for(int i=0;i<heights.size();i++)
-    //     {
-    //         while(!stk.empty() && heights[stk.top()] > heights[i])
-    //         {
-    //             int h = heights[stk.top()];
-    //             stk.pop();
-    //             int w = stk.empty()? -1:stk.top();
-    //             area = max(area, h*(i-w-1));
-    //         }
-    //         stk.push(i);
-    //     }
-    //     return area;
-    // }
+    int largestRectangleArea1(vector<int> &heights)
+    {
+        stack<int> stk;
+        int area = 0;
+        heights.push_back(0);
+        for (int i = 0; i < heights.size(); i++)
+        {
+            while (!stk.empty() && heights[stk.top()] > heights[i])
+            {
+                int h = heights[stk.top()];
+                stk.pop();
+                int w = stk.empty() ? -1 : stk.top();
+                area = max(area, h * (i - w - 1));
+                printf("h = %d, i = %d , w = %d, area = %d, \n", h, i, w, h * (i - w - 1));
+            }
+            stk.push(i);
+        }
+        return area;
+    }
 
     vector<int> previousLess(vector<int> &heights)
     {
@@ -69,6 +70,7 @@ public:
             int h = heights[i];
             int w = right[i] - left[i] - 1;
             ans = max(ans, h * w);
+            cout << left[i] << " " << right[i]<<" "<<h*w << endl;
         }
         return ans;
     }

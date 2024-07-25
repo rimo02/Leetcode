@@ -15,11 +15,15 @@ public:
     }
     void _union(int i, int j)
     {
+        cout << "i = " << i << "  j = " << j << endl;
         int p_a = parent(i);
         int p_b = parent(j);
+        cout << p_a << "  " << p_b << endl;
         if (p_a == p_b)
             return;
         v[p_a] = p_b;
+        for(auto &it: v) cout<<it<<" ";
+        cout<<endl;
     }
     int findCircleNum(vector<vector<int>> &isConnected)
     {
@@ -36,11 +40,13 @@ public:
             }
         }
         int c = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (v[i] == -1)
-                c++;
-        }
+        cout << "\n";
         return c;
     }
 };
+int main()
+{
+    vector<vector<int>> isConnected = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+    Solution S;
+    cout << S.findCircleNum(isConnected);
+}

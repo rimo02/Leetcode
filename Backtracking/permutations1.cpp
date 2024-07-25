@@ -4,25 +4,25 @@ class Solution
 {
 public:
     vector<vector<int>> ans;
-    void dfs(vector<int> arr, int idx)
+    void dfs(vector<int> arr, int idx, int n)
     {
-        if (idx >= arr.size())
+        if (idx == n)
         {
             ans.push_back(arr);
             return;
         }
-        for (int j = idx; j < arr.size(); j++)
+        for (int j = idx; j < n; j++)
         {
-            swap(arr[j],arr[idx]);
-            dfs(arr, idx + 1);
+            if (j != idx && arr[idx] == arr[j])
+                continue;
+            swap(arr[j], arr[idx]);
+            dfs(arr, idx + 1, n);
         }
     }
-    void findPermutations(int n)
+    void findPermutations(vector<int> &arr)
     {
-        vector<int> arr;
-        for (int i = 1; i <= n; i++)
-            arr.push_back(i);
-        dfs(arr, 0);
+        sort(arr.begin(), arr.end());
+        dfs(arr, 0, arr.size());
         for (auto el : ans)
         {
             for (auto it : el)
@@ -35,9 +35,7 @@ public:
 };
 int main()
 {
+    vector<int> arr = {2, 2, 1, 1};
     Solution S;
-    int n;
-    cout << "Enter n:";
-    cin >> n;
-    S.findPermutations(n);
+    S.findPermutations(arr);
 }
