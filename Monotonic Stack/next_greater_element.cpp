@@ -5,7 +5,7 @@ using namespace std;
 // find next greater element [3,7,8,4] -> [7,8,-1,-1]
 int main()
 {
-    vector<int> nums = {1, 2, 3, 4};
+    vector<int> nums = {2, 3, 7, 6};
     int n = nums.size();
     stack<int> stk; // maintain a monotinically decreasing stack
     vector<int> res(n, n);
